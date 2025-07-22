@@ -62,7 +62,7 @@ const EmploymentDetailsTab = ({ formData, onFormDataChange, errors }) => {
   return (
     <div className="space-y-6">
       {/* Employee Code Section */}
-      <div className="bg-surface-secondary rounded-lg p-6">
+      {/* <div className="bg-surface-secondary rounded-lg p-6">
         <h3 className="text-lg font-semibold text-text-primary mb-4">Code Employé</h3>
         <div className="flex items-center space-x-4">
           <div className="flex-1">
@@ -95,7 +95,7 @@ const EmploymentDetailsTab = ({ formData, onFormDataChange, errors }) => {
         {errors.employeeCode && (
           <p className="text-error text-sm mt-1">{errors.employeeCode}</p>
         )}
-      </div>
+      </div> */}
 
       {/* Employment Information */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -201,7 +201,7 @@ const EmploymentDetailsTab = ({ formData, onFormDataChange, errors }) => {
           )}
         </div>
 
-        <div>
+        {/* <div>
           <label className="block text-sm font-medium text-text-primary mb-2">
             Responsable Hiérarchique
           </label>
@@ -217,7 +217,7 @@ const EmploymentDetailsTab = ({ formData, onFormDataChange, errors }) => {
               </option>
             ))}
           </select>
-        </div>
+        </div> */}
 
         <div>
           <label className="block text-sm font-medium text-text-primary mb-2">
@@ -292,7 +292,7 @@ const EmploymentDetailsTab = ({ formData, onFormDataChange, errors }) => {
             />
           </div>
         </div>
-        <div className="mt-4">
+        {/* <div className="mt-4">
           <label className="block text-sm font-medium text-text-primary mb-2">
             Compétences Particulières
           </label>
@@ -303,7 +303,7 @@ const EmploymentDetailsTab = ({ formData, onFormDataChange, errors }) => {
             value={formData.skills || ''}
             onChange={(e) => handleInputChange('skills', e.target.value)}
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );

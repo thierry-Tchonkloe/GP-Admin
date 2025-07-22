@@ -9,6 +9,7 @@ import PersonalInfoTab from './components/PersonalInfoTab';
 import EmploymentDetailsTab from './components/EmploymentDetailsTab';
 import BiometricSetupTab from './components/BiometricSetupTab';
 import FormActions from './components/FormActions';
+import axios from 'axios';
 
 const EmployeeRegistration = () => {
   const navigate = useNavigate();
@@ -26,10 +27,10 @@ const EmployeeRegistration = () => {
     address: '',
     gender: '',
     maritalStatus: '',
-    profilePhoto: null,
-    emergencyContactName: '',
-    emergencyContactPhone: '',
-    emergencyContactRelation: '',
+    //profilePhoto: null,
+    // emergencyContactName: '',
+    // emergencyContactPhone: '',
+    // emergencyContactRelation: '',
     
     // Employment Details
     employeeCode: '',
@@ -38,14 +39,14 @@ const EmployeeRegistration = () => {
     hireDate: '',
     contractType: '',
     salary: '',
-    manager: '',
+    //manager: '',
     contractEndDate: '',
     workStartTime: '08:00',
     workEndTime: '17:00',
     educationLevel: '',
     experience: '',
-    skills: '',
-    manualCodeEntry: false,
+    //skills: '',
+    //manualCodeEntry: false,
     
     // Biometric Setup
     skipBiometric: false,
@@ -180,21 +181,81 @@ const EmployeeRegistration = () => {
     
     setIsLoading(true);
     
+    // try {
+    //   // Simulate API call
+    //   await new Promise(resolve => setTimeout(resolve, 2000));
+      
+    //   console.log('Employee data saved:', formData);
+      
+    //   // Mark all tabs as completed
+    //   setCompletedTabs(['personal', 'employment', 'biometric']);
+    //   setShowSuccess(true);
+      
+    // } catch (error) {
+    //   console.error('Error saving employee:', error);
+    // } finally {
+    //   setIsLoading(false);
+    // }
+   const data ={
+    full_name: formData.fullName,
+    email: formData.email,
+    phone: formData.phone,
+    date_of_birth: formData.dateOfBirth,
+    address: formData.address,
+    gender: formData.gender,
+    marital_status: formData.maritalStatus,
+    //emergency_contact_name: formData.emergencyContactName,
+    // emergency_contact_phone: formData.emergencyContactPhone,
+    // emergency_contact_relation: formData.emergencyContactRelation,
+    
+    employee_code: formData.employeeCode,
+    position: formData.position,
+    department: formData.department,
+    hire_date: formData.hireDate,
+    contract_type: formData.contractType,
+    salary: parseFloat(formData.salary),
+    //manager: formData.manager,
+    contract_end_date: formData.contractEndDate || null,
+    work_start_time: formData.workStartTime,
+    work_end_time: formData.workEndTime,
+    education_level: formData.educationLevel,
+    experience: formData.experience,
+    //skills: formData.skills,
+
+    skip_biometric: formData.skipBiometric,
+    fingerprints_enrolled: formData.fingerprintsEnrolled,
+  }
+
+  console.log(data)
+
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      const response = await axios.post('http://127.0.0.1:8000/employes/', data, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          withCredentials: true,
+          "Access-Control-Allow-Origin": "*"
+        },
+      } );
+
+    
+    
+      console.log('Employé créé avec succès :', response.data);
       
-      console.log('Employee data saved:', formData);
-      
-      // Mark all tabs as completed
       setCompletedTabs(['personal', 'employment', 'biometric']);
       setShowSuccess(true);
       
     } catch (error) {
-      console.error('Error saving employee:', error);
+      console.error('Erreur lors de la création de l’employé :', error);
+      alert("Échec de l'enregistrement de l'employé. Vérifie les champs ou réessaie plus tard.");
     } finally {
       setIsLoading(false);
+      setShowSuccess({
+        name: `${response.data.fullName}`,
+        employeeId: response.data.code_unique  // ou `data.code_unique` selon ta réponse API
+      });
     }
+    
   };
 
   const handleSaveAsDraft = async () => {
@@ -231,22 +292,22 @@ const EmployeeRegistration = () => {
       gender: '',
       maritalStatus: '',
       profilePhoto: null,
-      emergencyContactName: '',
-      emergencyContactPhone: '',
-      emergencyContactRelation: '',
+      //emergencyContactName: '',
+      //emergencyContactPhone: '',
+      //emergencyContactRelation: '',
       employeeCode: '',
       position: '',
       department: '',
       hireDate: '',
       contractType: '',
       salary: '',
-      manager: '',
+      //manager: '',
       contractEndDate: '',
       workStartTime: '08:00',
       workEndTime: '17:00',
       educationLevel: '',
       experience: '',
-      skills: '',
+      //skills: '',
       manualCodeEntry: false,
       skipBiometric: false,
       fingerprintsEnrolled: []
@@ -285,13 +346,13 @@ const EmployeeRegistration = () => {
             errors={errors}
           />
         );
-      case 'biometric':
-        return (
-          <BiometricSetupTab
-            formData={formData}
-            onFormDataChange={handleFormDataChange}
-          />
-        );
+      // case 'biometric':
+      //   return (
+      //     <BiometricSetupTab
+      //       formData={formData}
+      //       onFormDataChange={handleFormDataChange}
+      //     />
+      //   );
       default:
         return null;
     }

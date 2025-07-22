@@ -31,7 +31,7 @@ const PersonalInfoTab = ({ formData, onFormDataChange, errors }) => {
   return (
     <div className="space-y-6">
       {/* Profile Photo Section */}
-      <div className="bg-surface-secondary rounded-lg p-6">
+      {/* <div className="bg-surface-secondary rounded-lg p-6">
         <h3 className="text-lg font-semibold text-text-primary mb-4">Photo de Profil</h3>
         <div className="flex items-center space-x-6">
           <div className="relative">
@@ -67,7 +67,7 @@ const PersonalInfoTab = ({ formData, onFormDataChange, errors }) => {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Personal Information Form */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -177,7 +177,7 @@ const PersonalInfoTab = ({ formData, onFormDataChange, errors }) => {
       </div>
 
       {/* Emergency Contact */}
-      <div className="bg-surface-secondary rounded-lg p-6">
+      {/* <div className="bg-surface-secondary rounded-lg p-6">
         <h3 className="text-lg font-semibold text-text-primary mb-4">Contact d'Urgence</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
@@ -214,7 +214,7 @@ const PersonalInfoTab = ({ formData, onFormDataChange, errors }) => {
             />
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

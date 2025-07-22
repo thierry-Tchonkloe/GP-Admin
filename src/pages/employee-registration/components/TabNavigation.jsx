@@ -15,12 +15,12 @@ const TabNavigation = ({ activeTab, onTabChange, completedTabs }) => {
       icon: 'Briefcase',
       description: 'Poste, département et contrat'
     },
-    {
-      id: 'biometric',
-      label: 'Configuration Biométrique',
-      icon: 'Fingerprint',
-      description: 'Enregistrement des empreintes'
-    }
+    // {
+    //   id: 'biometric',
+    //   label: 'Configuration Biométrique',
+    //   icon: 'Fingerprint',
+    //   description: 'Enregistrement des empreintes'
+    // }
   ];
 
   const getTabStatus = (tabId) => {
@@ -98,7 +98,7 @@ const TabNavigation = ({ activeTab, onTabChange, completedTabs }) => {
               
               {/* Step Number */}
               <div className="text-xs font-medium opacity-60">
-                {index + 1}/3
+                {index + 1}/2
               </div>
             </div>
           );
